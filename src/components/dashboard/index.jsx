@@ -34,7 +34,7 @@ const Dashboard = ({ onSignOut }) => {
           name="nickname"
           initialValue={profile.name}
           onSave={onSave}
-          label={<h6 className="mb-2">NickName</h6>}
+          label={<h6 className="mb-2">Nick Name</h6>}
         />
         <AvatarUploadBtn />
       </Drawer.Body>

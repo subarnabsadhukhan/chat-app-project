@@ -37,6 +37,7 @@ const AvatarUploadBtn = () => {
       }
     }
   };
+
   const avatarEditorRef = useRef();
   const { profile } = useProfile();
   const onClickUpload = async () => {
@@ -57,6 +58,7 @@ const AvatarUploadBtn = () => {
       userAvatarRef.set(downloadUrl);
       setIsLoading(false);
       Alert.info('Avatar has been updated', 4000);
+      close();
     } catch (error) {
       setIsLoading(false);
       Alert.error(error.message, 4000);
