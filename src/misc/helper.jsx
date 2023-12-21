@@ -6,3 +6,16 @@ export function getNameInitials(name) {
     return splitName[0].charAt(0);
   }
 }
+
+export function transformToArrWithID(snapVal) {
+  if (!snapVal) {
+    return [];
+  }
+
+  return Object.entries(snapVal).map(([roomId, value]) => {
+    return {
+      ...value,
+      id: roomId,
+    };
+  });
+}

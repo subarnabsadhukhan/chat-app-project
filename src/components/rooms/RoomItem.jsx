@@ -1,7 +1,5 @@
-import { useRef } from 'react';
 import TimeAgo from 'timeago-react';
 const RoomItem = () => {
- 
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between">
