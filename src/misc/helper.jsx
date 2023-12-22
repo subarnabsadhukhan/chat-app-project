@@ -12,10 +12,10 @@ export function transformToArrWithID(snapVal) {
     return [];
   }
 
-  return Object.entries(snapVal).map(([roomId, value]) => {
+  return Object.entries(snapVal).map(([objKey, value]) => {
     return {
       ...value,
-      id: roomId,
+      id: objKey,
     };
   });
 }

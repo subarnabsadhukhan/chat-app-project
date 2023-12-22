@@ -33,7 +33,6 @@ const ChatBottom = () => {
     if (event.keyCode === 13) {
       event.preventDefault();
       onSendClick();
-      console.log('enter');
     }
   };
   const onSendClick = async () => {
@@ -51,7 +50,7 @@ const ChatBottom = () => {
       ...msgData,
       msgId: messageId,
     };
-    console.log(updates);
+
     setIsLoading(true);
     try {
       await database.ref().update(updates);
