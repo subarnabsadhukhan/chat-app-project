@@ -11,7 +11,7 @@ const ChatTop = () => {
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between">
-        <h4>
+        <h4 className="text-disappear d-flex align-items-center">
           <Icon
             icon="arrow-circle-left"
             componentClass={Link}
