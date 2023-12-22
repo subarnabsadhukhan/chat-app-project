@@ -1,6 +1,7 @@
 import { Button, Modal } from 'rsuite';
 import { useModalState } from '../../../misc/custom-hooks';
 import ProfileAvatar from '../../ProfileAvatar';
+import PresenceDot from '../../PresenceDot';
 
 const ProfileInfoBtnModal = ({ profile, ...btnProps }) => {
   const { open, isOpen, close } = useModalState();
@@ -10,7 +11,8 @@ const ProfileInfoBtnModal = ({ profile, ...btnProps }) => {
   return (
     <>
       <Button {...btnProps} onClick={open}>
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
+          <PresenceDot uid={profile.id} />
           <ProfileAvatar src={avatar} name={name} className="ml-1" size="xs" />
           <span className="ml-1"> {shortName}</span>
         </div>
