@@ -10,7 +10,10 @@ const ProfileInfoBtnModal = ({ profile, ...btnProps }) => {
   return (
     <>
       <Button {...btnProps} onClick={open}>
-        {shortName}
+        <div className="d-flex">
+          <ProfileAvatar src={avatar} name={name} className="ml-1" size="xs" />
+          <span className="ml-1"> {shortName}</span>
+        </div>
       </Button>
 
       <Modal show={isOpen} onHide={close}>
