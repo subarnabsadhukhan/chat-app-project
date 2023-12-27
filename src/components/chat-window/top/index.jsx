@@ -4,6 +4,7 @@ import { ButtonToolbar, Icon } from 'rsuite';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useMediaQuery } from '../../../misc/custom-hooks';
 import RoomInfoBtnModal from './RoomInfoBtnModal';
+import EditRoomBtnDrawer from './EditRoomBtnDrawer';
 
 const ChatTop = () => {
   const name = useCurrentRoom(v => v.name);
@@ -25,7 +26,9 @@ const ChatTop = () => {
           />
           <span className="text-disappear">{name}</span>
         </h4>
-        <ButtonToolbar className="ws-nowrap">todo</ButtonToolbar>
+        <ButtonToolbar className="ws-nowrap">
+          <EditRoomBtnDrawer />
+        </ButtonToolbar>
       </div>
       <div className="d-flex align-items-center justify-content-between">
         <span>todo</span>
