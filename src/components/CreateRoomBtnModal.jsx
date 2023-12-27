@@ -12,7 +12,7 @@ import {
 import { useModalState } from '../misc/custom-hooks';
 import { useCallback, useRef, useState } from 'react';
 import firebase from 'firebase/app';
-import { database } from '../misc/firebase';
+import { auth, database } from '../misc/firebase';
 
 const model = Schema.Model({
   name: Schema.Types.StringType().isRequired('Chat room name is required'),
@@ -44,6 +44,9 @@ const CreateRoomBtnModal = () => {
     const newRoomData = {
       ...formValue,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
+      admins: {
+        [auth.currentUser.uid]: true,
+      },
     };
 
     try {

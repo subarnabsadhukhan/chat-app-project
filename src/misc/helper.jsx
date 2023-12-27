@@ -7,6 +7,10 @@ export function getNameInitials(name) {
   }
 }
 
+export function transformToArr(snapVal) {
+  return snapVal ? Object.keys(snapVal) : [];
+}
+
 export function transformToArrWithID(snapVal) {
   if (!snapVal) {
     return [];
