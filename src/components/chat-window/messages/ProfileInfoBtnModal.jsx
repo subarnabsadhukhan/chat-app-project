@@ -3,7 +3,7 @@ import { useModalState } from '../../../misc/custom-hooks';
 import ProfileAvatar from '../../ProfileAvatar';
 import PresenceDot from '../../PresenceDot';
 
-const ProfileInfoBtnModal = ({ profile, ...btnProps }) => {
+const ProfileInfoBtnModal = ({ profile, children, ...btnProps }) => {
   const { open, isOpen, close } = useModalState();
   const shortName = profile.name.split(' ')[0];
   const { name, avatar, createdAt } = profile;
@@ -32,6 +32,7 @@ const ProfileInfoBtnModal = ({ profile, ...btnProps }) => {
           <p>Member since: {memberSince}</p>
         </Modal.Body>
         <Modal.Footer>
+          {children}
           <Button block onClick={close}>
             Close
           </Button>

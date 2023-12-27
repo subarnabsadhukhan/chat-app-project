@@ -4,6 +4,7 @@ import EditableInput from '../../EditableInput';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { database } from '../../../misc/firebase';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { memo } from 'react';
 
 const EditRoomBtnDrawer = () => {
   const name = useCurrentRoom(v => v.name);
@@ -65,4 +66,4 @@ const EditRoomBtnDrawer = () => {
   );
 };
 
-export default EditRoomBtnDrawer;
+export default memo(EditRoomBtnDrawer);
