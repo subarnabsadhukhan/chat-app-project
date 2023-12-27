@@ -6,6 +6,7 @@ import { memo } from 'react';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { auth } from '../../../misc/firebase';
 import { useHover } from '../../../misc/custom-hooks';
+import IconBtnControl from './IconBtnControl';
 
 const MessageItem = ({ message, handleAdmin }) => {
   const { createdAt, text, author } = message;
@@ -39,6 +40,15 @@ const MessageItem = ({ message, handleAdmin }) => {
         <TimeAgo
           className="text-black-45 ml-2 font-normal"
           datetime={createdAt}
+        />
+        <IconBtnControl
+          // eslint-disable-next-line no-constant-condition
+          {...(true ? { color: 'red' } : {})}
+          isVisible
+          iconName="heart"
+          tooltip="Like this message"
+          onClick={() => {}}
+          badgeContent={5}
         />
       </div>
 
