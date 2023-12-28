@@ -65,7 +65,7 @@ const ChatBottom = () => {
   };
 
   const afterUpload = useCallback(
-    async files => {
+    async (files, caption) => {
       setIsLoading(true);
       const updates = {};
       files.forEach(file => {
@@ -78,6 +78,11 @@ const ChatBottom = () => {
       });
 
       const lastMessageId = Object.keys(updates).pop();
+
+      updates[lastMessageId] = {
+        ...updates[lastMessageId],
+        text: caption,
+      };
 
       updates[`/rooms/${chatId}/lastMessage`] = {
         ...updates[lastMessageId],

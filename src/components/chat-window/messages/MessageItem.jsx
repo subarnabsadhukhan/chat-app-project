@@ -77,8 +77,9 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
       </div>
 
       <div>
+        <div className="mb-1">{file && renderFileMessage(file)}</div>
+
         {text && <span className="word-break-all"> {text} </span>}
-        {file && renderFileMessage(file)}
       </div>
     </li>
   );

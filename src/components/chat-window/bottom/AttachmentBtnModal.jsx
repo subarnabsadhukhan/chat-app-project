@@ -1,6 +1,14 @@
-import { Alert, Button, Icon, InputGroup, Modal, Uploader } from 'rsuite';
+import {
+  Alert,
+  Button,
+  Icon,
+  Input,
+  InputGroup,
+  Modal,
+  Uploader,
+} from 'rsuite';
 import { useModalState } from '../../../misc/custom-hooks';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { storage } from '../../../misc/firebase';
 
@@ -11,6 +19,11 @@ const AttachmentBtnModal = ({ afterUpload }) => {
   const { open, isOpen, close } = useModalState();
   const [fileList, setFileList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [caption, setCaption] = useState('');
+
+  const onInputChange = useCallback(value => {
+    setCaption(value);
+  }, []);
   const onChange = fileArr => {
     const filtered = fileArr
       .filter(el => el.blobFile.size <= MAX_FILE_SIZE)
@@ -40,8 +53,9 @@ const AttachmentBtnModal = ({ afterUpload }) => {
 
       const files = await Promise.all(shapePromises);
 
-      await afterUpload(files);
+      await afterUpload(files, caption);
       setFileList([]);
+      setCaption('');
       setIsLoading(false);
       close();
     } catch (error) {
@@ -68,6 +82,13 @@ const AttachmentBtnModal = ({ afterUpload }) => {
             listType="picture-text"
             className="w-100"
             disabled={isLoading}
+          />
+          <Input
+            className="mt-2"
+            placeholder="Write a new message..."
+            value={caption}
+            onChange={onInputChange}
+            disabled={fileList.length === 0}
           />
         </Modal.Body>
         <Modal.Footer>
