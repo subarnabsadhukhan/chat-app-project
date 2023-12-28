@@ -1,5 +1,6 @@
 import TimeAgo from 'timeago-react';
 import ProfileAvatar from '../ProfileAvatar';
+import { Icon } from 'rsuite';
 const RoomItem = ({ room }) => {
   const { createdAt, name, lastMessage } = room;
   return (
@@ -25,7 +26,20 @@ const RoomItem = ({ room }) => {
             </div>
             <div className="text-disappear ml-2">
               <div className="italic">{lastMessage.author.name} </div>
-              <span>{lastMessage.text}</span>
+              <span>
+                {lastMessage.text || (
+                  <>
+                    <Icon
+                      icon={
+                        lastMessage.file.contentType.includes('image')
+                          ? 'image'
+                          : 'attachment'
+                      }
+                    />{' '}
+                    {lastMessage.file.name.slice(13)}
+                  </>
+                )}
+              </span>
             </div>
           </>
         ) : (
