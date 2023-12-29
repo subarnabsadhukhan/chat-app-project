@@ -5,6 +5,7 @@ import { useProfile } from '../../../context/profile.context';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { database } from '../../../misc/firebase';
 import AttachmentBtnModal from './AttachmentBtnModal';
+import AudioMsgBtn from './AudioMsgBtn';
 
 function assembleMessage(profile, chatId) {
   return {
@@ -65,7 +66,7 @@ const ChatBottom = () => {
   };
 
   const afterUpload = useCallback(
-    async (files, caption) => {
+    async (files, caption = null) => {
       setIsLoading(true);
       const updates = {};
       files.forEach(file => {
@@ -103,6 +104,7 @@ const ChatBottom = () => {
     <div>
       <InputGroup>
         <AttachmentBtnModal afterUpload={afterUpload} />
+        <AudioMsgBtn afterUpload={afterUpload} />
         <Input
           placeholder="Write a new message..."
           value={input}
