@@ -32,7 +32,6 @@ const ChatTop = () => {
         </ButtonToolbar>
       </div>
       <div className="d-flex align-items-center justify-content-between">
-        <span>todo</span>
         <RoomInfoBtnModal />
       </div>
     </div>
