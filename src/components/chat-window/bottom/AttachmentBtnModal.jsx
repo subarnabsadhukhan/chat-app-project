@@ -4,6 +4,7 @@ import {
   Icon,
   Input,
   InputGroup,
+  Loader,
   Modal,
   Uploader,
 } from 'rsuite';
@@ -32,6 +33,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
     setFileList(filtered);
   };
   const onUpload = async () => {
+    setIsLoading(true);
     try {
       const uploadPromises = fileList.map(f =>
         storage
@@ -73,23 +75,36 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           <Modal.Title>Upload Files</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Uploader
-            autoUpload={false}
-            fileList={fileList}
-            action=""
-            onChange={onChange}
-            multiple
-            listType="picture-text"
-            className="w-100"
-            disabled={isLoading}
-          />
-          <Input
-            className="mt-2"
-            placeholder="Write a new message..."
-            value={caption}
-            onChange={onInputChange}
-            disabled={fileList.length === 0}
-          />
+          {isLoading && (
+            <Loader
+              center
+              vertical
+              size="md"
+              content="Uploading..."
+              speed="fast"
+            />
+          )}
+          {!isLoading && (
+            <>
+              <Uploader
+                autoUpload={false}
+                fileList={fileList}
+                action=""
+                onChange={onChange}
+                multiple
+                listType="picture-text"
+                className="w-100"
+                disabled={isLoading}
+              />
+              <Input
+                className="mt-2"
+                placeholder="Write a new message..."
+                value={caption}
+                onChange={onInputChange}
+                disabled={fileList.length === 0}
+              />
+            </>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button
